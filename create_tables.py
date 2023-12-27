@@ -2,8 +2,8 @@ from database import create_connection
 
 def create_tables():
     connection = create_connection()
-    conn = connection.cursor()
-    conn.execute("""
+    cursor = connection.cursor()
+    cursor.execute("""
         CREATE TABLE IF NOT EXISTS tasks (
             id INTEGER PRIMARY KEY  AUTOINCREMENT,
             title TEXT NOT NULL,
@@ -13,7 +13,7 @@ def create_tables():
         )
     """)
 
-    conn.execute("""
+    cursor.execute("""
         CREATE TABLE IF NOT EXISTS subtasks (
             id INTEGER PRIMARY KEY  AUTOINCREMENT,
             task_id INTEGER,
