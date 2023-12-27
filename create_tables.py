@@ -9,6 +9,7 @@ def create_tables():
             title TEXT NOT NULL,
             detail TEXT NOT NULL,
             urgency INTEGER DEFAULT 1 CHECK (urgency>=1 AND urgency <=5),
+            is_completed INTEGER DEFAULT 0,
             date_created DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     """)
@@ -20,6 +21,7 @@ def create_tables():
             subtask_title  TEXT NOT NULL,
             subtask_details  TEXT NOT NULL,
             subtask_urgency INTEGER DEFAULT 1 CHECK (subtask_urgency>=1 AND subtask_urgency <=5),
+            is_completed INTEGER DEFAULT 0,
             date_created DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     """)
