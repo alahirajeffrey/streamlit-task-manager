@@ -1,6 +1,6 @@
 from database import create_connection
 
-def create_task(title, detail, urgency=1):
+def add_task(title, detail, urgency=1):
     connection = create_connection()
     cursor = connection.cursor()
     cursor.execute(
