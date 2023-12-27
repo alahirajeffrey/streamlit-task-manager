@@ -24,21 +24,27 @@ def add_subbtask(title, detail, task_id, urgency=1):
     connection.commit()
     cursor.close()
 
-def view_all_tasks():
+def get_tasks():
     connection = create_connection()
     cursor = connection.cursor()
     cursor.execute(
         """
-        "SELECT * FROM tasks"
+        SELECT * FROM tasks
         """
     )
+    tasks = cursor.fetchall()
+
     connection.commit()
     cursor.close()
+    return tasks
 
-def view_single_task(task_id):
+def get_task(task_id):
     connection = create_connection()
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM tasks WHERE id = ?", (task_id,))
+    cursor.execute(
+        """
+        SELECT * FROM tasks WHERE id = ?
+        """, (task_id,))
     task = cursor.fetchone()
     
     if task:
